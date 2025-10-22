@@ -1,0 +1,56 @@
+    :root{
+      --bg1:#ff8bd8;--bg2:#7b5cff;--card-back:#ffffff22;--accent:#fff;
+      --glass: rgba(255,255,255,0.08);
+      --glass-2: rgba(255,255,255,0.04);
+      --shadow: 0 6px 18px rgba(0,0,0,0.25);
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+  
+
+    .app{width:100%;max-width:1080px;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.03));border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    header{display:flex;align-items:center;gap:12px}
+    header h1{margin:0;font-size:20px}
+    .controls{margin-left:auto;display:flex;gap:8px}
+    button{background:transparent;border:2px solid rgba(255,255,255,0.12);color:var(--accent);padding:8px 14px;border-radius:12px;cursor:pointer}
+    button.primary{background:rgba(255,255,255,0.12);border-color:transparent}
+
+    main{margin-top:18px}
+    .screen{display:none;animation:fade .35s ease both}
+    .screen.active{display:block}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+    /* Welcome */
+    .welcome{display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px;text-align:center}
+    .title-hero{font-size:28px;font-weight:700}
+    .start-btn{font-size:18px;padding:12px 22px}
+
+    /* Game area */
+    .game-area{display:flex;flex-direction:column;gap:14px;align-items:center}
+    .grid{display:grid;gap:12px;justify-content:center}
+
+    .card{width:86px;height:110px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;perspective:900px}
+    .card-inner{width:100%;height:100%;border-radius:10px;position:relative;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.9,.3,1)}
+    .card.flipped .card-inner{transform:rotateY(180deg)}
+    .face{position:absolute;inset:0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:34px;backface-visibility:hidden}
+    .face.back{transform:rotateY(180deg);background:linear-gradient(180deg,#fff,#fff);color:#333}
+    .face.front{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.04));border:2px solid rgba(255,255,255,0.06)}
+
+    .status{display:flex;gap:12px;align-items:center}
+
+    /* Final card */
+    .surprise{display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px}
+    .card-wrap{width:320px;height:200px;perspective:1200px}
+    .gift{width:100%;height:100%;border-radius:12px;background:linear-gradient(120deg,#fff,#ffe6f7);color:#333;transform-origin:left center;transition:transform .8s ease;box-shadow:0 20px 40px rgba(0,0,0,0.28);position:relative}
+    .gift.flipped{transform:rotateY(-180deg)}
+    .gift .page{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:18px}
+    .page.front{backface-visibility:hidden}
+    .page.back{transform:rotateY(180deg);backface-visibility:hidden}
+
+    .confetti-area{position:fixed;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:hidden}
+    .confetti{position:absolute;width:10px;height:16px;opacity:0.95;transform-origin:center;animation:fall 3s linear both}
+    @keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:0}}
+
+    /* responsive */
+    @media (max-width:600px){.card{width:68px;height:90px;font-size:28px}}
